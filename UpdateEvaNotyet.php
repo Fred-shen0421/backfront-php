@@ -17,7 +17,7 @@
       //  echo $_POST["eid"];
       //  echo $_POST["status"];
        //建立SQL
-       $sql = " UPDATE EVALUATE SET STATUS = '未回覆' where ID = ? ";
+       $sql = " UPDATE EVALUATE SET STATUS = '未回覆' where ID = ? ";
     //    if ($_POST["status"]="已回覆"){
     //        $sql ="UPDATE EVALUATE SET STATUS = 已回覆 where ID = 1";
     //        echo '123';
