@@ -1,11 +1,11 @@
 <?php
       include 'connection.php';
       
-      $userID = $_POST['userid'];
+      $aucID = $_POST['aucid'];
       
-      $sql = "SELECT * FROM Member WHERE MEMBERID = ?";
+      $sql = "SELECT * FROM AUCTIONINFO WHERE AUCTIONID = ?";
       $statement = $pdo->prepare($sql);
-      $statement->bindValue(1, $userID);
+      $statement->bindValue(1, $aucID);
       $statement->execute();
 
       $data = $statement->fetchAll();

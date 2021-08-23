@@ -1,11 +1,11 @@
 <?php
       include 'connection.php';
       
-      $userID = $_POST['userid'];
+      $carID = $_POST['carid'];
       
-      $sql = "SELECT * FROM Member WHERE MEMBERID = ?";
+      $sql = "SELECT * FROM CARTYPE WHERE CARID = ?";
       $statement = $pdo->prepare($sql);
-      $statement->bindValue(1, $userID);
+      $statement->bindValue(1, $carID);
       $statement->execute();
 
       $data = $statement->fetchAll();
