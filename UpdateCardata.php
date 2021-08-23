@@ -1,5 +1,6 @@
 <?php
     include 'connection.php';
+
     //---------------------------------------------------
 
     //判斷是否上傳成功
@@ -23,24 +24,15 @@
         $fourteen = $_POST["CARPRICE"];
         $fifteen = $_POST["ENERGY"];
         $sixteen = $_POST["RATES"];
-        $fileName = $_FILES["CARTYPEPHOTO"]["name"];    //檔案名稱含副檔名        
-        $filePath_Temp = $_FILES["CARTYPEPHOTO"]["tmp_name"];   //Server上的暫存檔路徑含檔名        
-        $fileType = $_FILES["CARTYPEPHOTO"]["type"];    //檔案種類        
-        $fileSize = $_FILES["CARTYPEPHOTO"]["size"];    //檔案尺寸
+        $seventeen = $_POST["CARID"];
+
+        echo $seventeen;
         //=======================================================
 
-        $ServerRoot = $_SERVER["DOCUMENT_ROOT"];
-        $filePath = $ServerRoot."/Project_thevroom/public/CartypeImage/".$fileName;
-        $realPath = "/CartypeImage/".$fileName;
-
-        move_uploaded_file($filePath_Temp, $filePath);
-
-        $sql = "INSERT INTO CARTYPE(BRAND, CARMODEL, POWERTYPE, ENGINETYPE, TRANSMISSIONSYSTEM, DRIVETYPE, MAXTORQUE, BODYTYPE, MODELSIZE, TRUNKSIZE, DOOR, DISPLACEMENT, PERFORMANCEDATA, CARPRICE, ENERGY, RATES, CARTYPEPHOTO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        $pdo->exec($sql);  
+        $sql = "UPDATE CARTYPE SET BRAND = ? , CARMODEL = ? , POWERTYPE = ? , ENGINETYPE = ? , TRANSMISSIONSYSTEM = ? , DRIVETYPE = ? , MAXTORQUE = ? , BODYTYPE = ? , MODELSIZE = ? , TRUNKSIZE = ? , DOOR = ? , DISPLACEMENT = ? , PERFORMANCEDATA = ? , CARPRICE = ? , ENERGY = ? , RATES = ? WHERE CARID = ?";
 
         $statement = $pdo->prepare($sql);
-        // $statement->bindValue(1 , $randomId);
+
         $statement->bindValue(1 , $one);
         $statement->bindValue(2 , $two);
         $statement->bindValue(3 , $three);
@@ -57,8 +49,7 @@
         $statement->bindValue(14 , $fourteen);
         $statement->bindValue(15 , $fifteen);
         $statement->bindValue(16 , $sixteen);
-        $statement->bindValue(17 , $realPath);
+        $statement->bindValue(17 , $seventeen);
         $statement->execute();
-
     }
 ?>

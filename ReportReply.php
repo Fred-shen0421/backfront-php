@@ -1,17 +1,6 @@
 <?php
 
-       //MySQL相關資訊
-       $db_host = "127.0.0.1";
-       $db_user = "root";
-       $db_pass = "root";
-       $db_select = "thevroom";
-
-       //建立資料庫連線物件
-       $dsn = "mysql:host=".$db_host.";dbname=".$db_select;
-
-       //建立PDO物件，並放入指定的相關資料
-       $pdo = new PDO($dsn, $db_user, $db_pass); //這些是自己定義的名稱，只要一樣就可以不是確定
-
+       include 'connection.php';
        //---------------------------------------------------
        //建立SQL語法
        $sql = "SELECT a.* ,b.REASON FROM FORUMREPLY a JOIN REPORTDIALOG b ON a.MESSAGECONTENT = b.MESSAGECONTENT";

@@ -1,11 +1,11 @@
 <?php
       include 'connection.php';
       
-      $artID = $_POST['artid'];
+      $userID = $_POST['userid'];
       
-      $sql = "SELECT * FROM FORUM WHERE ARTICLEID = ?";
+      $sql = "SELECT * FROM Member WHERE MEMBERID = ?";
       $statement = $pdo->prepare($sql);
-      $statement->bindValue(1, $artID);
+      $statement->bindValue(1, $userID);
       $statement->execute();
 
       $data = $statement->fetchAll();
